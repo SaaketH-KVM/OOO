@@ -421,7 +421,9 @@
                            <td th:text="${c.code}"></td> 
                            <td>
 							   <div class="btn-group"> 
-								  <a  th:href="@{/country/findById(id=${c.id})}" class="btn btn-primary" id="editButton">Edit</a>
+								  <a  th:href="@{/country/findById(id=${c.id})}" class="btn btn-primary" id="editButton"><i class="icon_pencil-edit"> </i></a>
+								  <a  th:href="@{/country/findById(id=${c.id})}" class="btn btn-success" id="detailsButton"><i class="icon_document_alt"> </i></a>		  
+								  <a  th:href="@{/country/delete(id=${c.id})}" class="btn btn-danger" id="deleteButton"><i class="icon_close_alt2"> </i></a>
 
 							   </div> 
 							   
@@ -500,20 +502,16 @@
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Update Country</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+<!--          <span aria-hidden="true">&times;</span>   -->
         </button>
       </div>
       <div class="modal-body" id="editModal">
         <form th:action="@{/country/update}" method="put">
 			
 		 <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Description:</label>
+            <label for="recipient-name" class="col-form-label">Id:</label>
             <input type="text" class="form-control" id="idEdit" name="id" readonly>
           </div>
-			
-			
-			
-		
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Description:</label>
             <input type="text" class="form-control" id="descriptionEdit" name="description" value="">
@@ -543,6 +541,32 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirm Delete</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+ <!--         <span aria-hidden="true">&times;</span> -->
+        </button>
+      </div>
+      <div class="modal-body">
+		  <P>Are you sure this record will be deleted</P>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <a class="btn btn-primary" id="confirmDeleteButton" href="">Yes, Delete</a>
       </div>
     </div>
   </div>

@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.Saaketh.fleetapp.models.Country;
@@ -39,5 +41,16 @@ public class CountryController {
 		return ResponseEntity.ok(countryService.findById(id));
 	}
 	
+	@RequestMapping(value="/country/update",method= {RequestMethod.PUT, RequestMethod.GET})
+	public String update(Country country) {
+		countryService.save(country);
+		return "redirect:/country";
+	}
+	
+	@RequestMapping(value="/country/delete",method= {RequestMethod.DELETE, RequestMethod.GET})
+	public String update(Integer id) {
+		countryService.delete(id);
+		return "redirect:/country";
+	}
 	
 }
